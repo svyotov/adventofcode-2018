@@ -136,7 +136,7 @@ func Run2(file string, threshold int) {
 	handleErr(err)
 	claim, ok := GetNonOverlappingData(threshold, data)
 	if !ok {
-		panic("faile dot run day 3 task 2")
+		panic("failed to run day 3 task 2")
 	}
 	fmt.Printf("Day 03 t2: '%v'\n", claim.ID)
 }

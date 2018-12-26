@@ -34,7 +34,7 @@ var testreadInputData = []struct {
 	{testName: "Normal", file: "input", expLen: 993, expOut: 556},
 }
 
-func TestreadInputData(t *testing.T) {
+func TestReadInputData(t *testing.T) {
 	for _, tt := range testreadInputData {
 		t.Run(tt.testName, func(t *testing.T) {
 			changes, err := readInputData(tt.file)

@@ -50,11 +50,33 @@ func FindFirstDuplicate(freq int64, changes []int, maxIterations int) (int64, er
 		for ci := range changes {
 			freq += int64(changes[ci])
 			if previousFreq[freq] {
-				fmt.Printf("found a duplicate %v in %v iterations\n", freq, iter)
 				return freq, nil
 			}
 			previousFreq[freq] = true
 		}
 	}
 	return 0, fmt.Errorf("failed to find a duplicate in %v iterations", maxIterations)
+}
+
+// Run1 runs task one for this day
+func Run1(file string) {
+	changes, err := readInputData(file)
+	if err != nil {
+		panic("failed to read data " + err.Error())
+	}
+	fmt.Printf("Day 01 t1: '%v'\n", ComputeFrequency(0, changes)) // 556
+}
+
+// Run2 runs task two for this day
+func Run2(file string) {
+	changes, err := readInputData(file)
+	if err != nil {
+		panic("failed to read data " + err.Error())
+	}
+	firstDuplicate, err := FindFirstDuplicate(0, changes, 300)
+	if err != nil {
+		panic("failed to read data " + err.Error())
+	}
+
+	fmt.Printf("Day 01 t1: '%v'\n", firstDuplicate) // 448
 }

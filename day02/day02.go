@@ -2,6 +2,7 @@ package day02
 
 import (
 	"encoding/csv"
+	"fmt"
 	"os"
 )
 
@@ -118,4 +119,26 @@ func min(a, b int) int {
 		return a
 	}
 	return b
+}
+
+// Run1 runs task one for this day
+func Run1(file string) {
+	data, err := readInputData(file)
+	if err != nil {
+		panic("failed to read data " + err.Error())
+	}
+	fmt.Printf("Day 02 t1: '%v'\n", CheckSum(data)) // 8296
+}
+
+// Run2 runs task two for this day
+func Run2(file string) {
+	data, err := readInputData(file)
+	if err != nil {
+		panic("failed to read data " + err.Error())
+	}
+	match, ok := FindBoxDistanceOne(data)
+	if !ok {
+		panic("failed to run day 2 task 2")
+	}
+	fmt.Printf("Day 02 t2: '%v'\n", match) // "pazvmqbftrbeosiecxlghkwud",
 }

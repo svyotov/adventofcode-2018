@@ -77,7 +77,7 @@ func TestFindBoxDistanceOne(t *testing.T) {
 }
 
 func TestFindBoxDistanceOneFile(t *testing.T) {
-	testName := "case 1"
+	testName := "case 2"
 	t.Run(testName, func(t *testing.T) {
 		data, err := readInputData("input")
 		if err != nil {
