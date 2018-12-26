@@ -44,7 +44,7 @@ func TestCheckSum(t *testing.T) {
 func TestLocalFileHash(t *testing.T) {
 	testName := "case 1"
 	t.Run(testName, func(t *testing.T) {
-		data, err := ReadInputData("input")
+		data, err := readInputData("input")
 		if err != nil {
 			panic("failed to read data " + err.Error())
 		}
@@ -79,7 +79,7 @@ func TestFindBoxDistanceOne(t *testing.T) {
 func TestFindBoxDistanceOneFile(t *testing.T) {
 	testName := "case 1"
 	t.Run(testName, func(t *testing.T) {
-		data, err := ReadInputData("input")
+		data, err := readInputData("input")
 		if err != nil {
 			panic("failed to read data " + err.Error())
 		}

@@ -5,9 +5,9 @@ import (
 	"os"
 )
 
-// ReadInputData reads the input data for this test
+// readInputData reads the input data for this test
 // adssumes no header
-func ReadInputData(file string) (data []string, err error) {
+func readInputData(file string) (data []string, err error) {
 	f, err := os.Open(file)
 	if err != nil {
 		return data, err

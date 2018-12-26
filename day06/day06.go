@@ -96,17 +96,6 @@ func generateField(a point, fx, fy int) [][]fpoint {
 		}
 	}
 
-	// for ix := 0; ix < fx; ix++ {
-	// 	for iy := 0; iy < fy; iy++ {
-	// 		fmt.Printf("%02d, ", field[ix][iy].score)
-	// 	}
-	// 	fmt.Println()
-	// }
-	// fmt.Println("==============================")
-	// fmt.Println(fx)
-	// fmt.Println(fy)
-	// fmt.Println("==============================")
-
 	return field
 }
 
@@ -128,14 +117,9 @@ func generateField(a point, fx, fy int) [][]fpoint {
 // bbb.ffffFf
 func merge(a, b [][]fpoint) [][]fpoint {
 	result := copy(a)
-	bad := 0
-	fmt.Println("||---------------")
-	//print(a)
-	//print(b)
 	for ix := range a {
 		for iy := range a[ix] {
 			if a[ix][iy].score == b[ix][iy].score {
-				bad++
 				result[ix][iy].owner = infinite
 			}
 			if a[ix][iy].score > b[ix][iy].score {
@@ -143,9 +127,6 @@ func merge(a, b [][]fpoint) [][]fpoint {
 			}
 		}
 	}
-	//print(result)
-	fmt.Println("---------------||")
-	fmt.Printf("bad %v,\n", bad)
 	return result
 }
 
@@ -235,8 +216,6 @@ func getMaxField(data []point) int {
 			points[dt.owner] = pnt
 		}
 	}
-
-	//print(field)
 
 	nx := len(field)
 	ny := len(field[0])

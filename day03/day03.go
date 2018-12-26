@@ -27,9 +27,9 @@ func handleErr(err error) {
 	}
 }
 
-// ReadInputData reads the input data for this test
+// readInputData reads the input data for this test
 // adssumes no header
-func ReadInputData(file string) (data []Claim, err error) {
+func readInputData(file string) (data []Claim, err error) {
 	b, err := ioutil.ReadFile(file)
 	if err != nil {
 		return []Claim{}, err
@@ -61,13 +61,13 @@ func split(r rune) bool {
 	return r == ' ' || r == ',' || r == '#' || r == ':' || r == 'x' || r == '@'
 }
 
-// CountOverlapingSquares counts the # of squares overlaping
+// CountOverlappingSquares counts the # of squares overlapping
 // as described in part 1 in README.md
 // TODO this will panic if claims out of range (size)
-func CountOverlapingSquares(size int, data []Claim) int {
+func CountOverlappingSquares(size int, data []Claim) int {
 	field := getOverlapField(size, data)
 
-	// get the number of the overlaping fields
+	// get the number of the overlapping fields
 	sum := 0
 	for x := 0; x < len(field); x++ {
 		for y := 0; y < len(field[x]); y++ {
@@ -87,7 +87,7 @@ func getOverlapField(size int, data []Claim) [][]int {
 		field[i] = make([]int, size)
 	}
 
-	// find the overlaping fields
+	// find the overlapping fields
 	for _, claim := range data {
 		for w := 0; w < claim.W; w++ {
 			for h := 0; h < claim.H; h++ {
@@ -99,13 +99,13 @@ func getOverlapField(size int, data []Claim) [][]int {
 	return field
 }
 
-// GetNonOverlapingData counts the # of squares overlaping
+// GetNonOverlappingData counts the # of squares overlapping
 // as described in part 1 in README.md
 // TODO this will panic if claims out of range (size)
-func GetNonOverlapingData(size int, data []Claim) (Claim, bool) {
+func GetNonOverlappingData(size int, data []Claim) (Claim, bool) {
 	field := getOverlapField(size, data)
 
-	// fiend the overlaping fields
+	// fiend the overlapping fields
 	for _, claim := range data {
 		ok := true
 		for w := 0; w < claim.W; w++ {
@@ -120,4 +120,23 @@ func GetNonOverlapingData(size int, data []Claim) (Claim, bool) {
 		}
 	}
 	return Claim{}, false
+}
+
+// Run1 runs task one for this day
+func Run1(file string, threshold int) {
+	data, err := readInputData(file)
+	handleErr(err)
+
+	fmt.Printf("Day 03 t1: '%v'\n", CountOverlappingSquares(threshold, data))
+}
+
+// Run2 runs task two for this day
+func Run2(file string, threshold int) {
+	data, err := readInputData(file)
+	handleErr(err)
+	claim, ok := GetNonOverlappingData(threshold, data)
+	if !ok {
+		panic("faile dot run day 3 task 2")
+	}
+	fmt.Printf("Day 03 t2: '%v'\n", claim.ID)
 }

@@ -25,7 +25,7 @@ func TestComputeFrequency(t *testing.T) {
 	}
 }
 
-var testReadInputData = []struct {
+var testreadInputData = []struct {
 	testName string
 	file     string
 	expLen   int
@@ -34,10 +34,10 @@ var testReadInputData = []struct {
 	{testName: "Normal", file: "input", expLen: 993, expOut: 556},
 }
 
-func TestReadInputData(t *testing.T) {
-	for _, tt := range testReadInputData {
+func TestreadInputData(t *testing.T) {
+	for _, tt := range testreadInputData {
 		t.Run(tt.testName, func(t *testing.T) {
-			changes, err := ReadInputData(tt.file)
+			changes, err := readInputData(tt.file)
 			assert.NoError(t, err, tt.testName)
 			assert.Equal(t, tt.expLen, len(changes), tt.testName)
 			assert.Equal(t, tt.expOut, ComputeFrequency(0, changes), tt.testName)
@@ -71,7 +71,7 @@ func TestFindFirstDuplicate(t *testing.T) {
 func TestFindFirstDuplicateFile(t *testing.T) {
 	testName := "from file"
 	t.Run(testName, func(t *testing.T) {
-		changes, err := ReadInputData("input")
+		changes, err := readInputData("input")
 		assert.NoError(t, err, testName)
 		firstDuplicate, err := FindFirstDuplicate(0, changes, 300)
 		assert.NoError(t, err, testName)

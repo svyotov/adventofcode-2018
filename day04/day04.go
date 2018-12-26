@@ -76,9 +76,7 @@ func readInputData(file string) (data map[int]guard, err error) {
 
 	for indx, row := range rows {
 		date, err := time.Parse("2006-01-02 15:04", row[1:17])
-		if err != nil {
-			panic(err)
-		}
+		handleErr(err)
 		allEvents[indx] = event{date: date, text: row, etype: -1}
 	}
 
@@ -96,9 +94,7 @@ func readInputData(file string) (data map[int]guard, err error) {
 			evnt.etype = endShift
 			data[guardID] = guard{id: guardID, events: append(data[guardID].events, evnt)}
 			guardID, err = strconv.Atoi(re.FindAllString(evnt.text[26:], -1)[0])
-			if err != nil {
-				panic(err)
-			}
+			handleErr(err)
 			// start the new guard
 			evnt.etype = beginsShift
 			data[guardID] = guard{id: guardID, events: append(data[guardID].events, evnt)}
@@ -226,16 +222,14 @@ func sleepEstimatorTask2(data map[int]guard) int {
 	return maxTotalSleepIndx * maxTotalSleepGuardID
 }
 
-// Run1 runs task one for this days ta/home/svyotov/go/src/github.com/svyotov/adventofcode-2018/day04/day04.go:234:3: syntax error: unexpected input at end of statement
+// Run1 runs task one for this day
 func Run1(file string) {
 	data, err := readInputData(file)
-	if err != nil {
-		panic(err)
-	}
+	handleErr(err)
 	fmt.Printf("Day 04 t1: '%v'\n", sleepEstimatorTask1(data))
 }
 
-// Run2 runs task tow for this days task
+// Run1 runs task two for this day
 func Run2(file string) {
 	data, err := readInputData(file)
 	if err != nil {
