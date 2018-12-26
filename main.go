@@ -7,6 +7,7 @@ import (
 	"github.com/svyotov/adventofcode-2018/day04"
 	"github.com/svyotov/adventofcode-2018/day05"
 	"github.com/svyotov/adventofcode-2018/day06"
+	"github.com/svyotov/adventofcode-2018/day07"
 )
 
 func main() {
@@ -22,4 +23,6 @@ func main() {
 	day05.Run2("day05/input")
 	day06.Run1("day06/input")
 	day06.Run2("day06/input", 10000)
+	day07.Run1("day07/input")
+	day07.Run2("day07/input", 5, 60)
 }
