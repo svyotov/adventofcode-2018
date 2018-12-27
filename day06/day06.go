@@ -305,6 +305,6 @@ func Run2(file string, threshold int) int {
 		panic(err)
 	}
 	score := getFieldsUnderTreshold(data, threshold)
-	fmt.Printf("Day 06 t1: '%v'\n", score)
+	fmt.Printf("Day 06 t2: '%v'\n", score)
 	return score
 }

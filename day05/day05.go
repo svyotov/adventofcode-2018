@@ -87,6 +87,6 @@ func Run2(file string) int {
 		panic(err)
 	}
 	score := shortestPolymerLength(data)
-	fmt.Printf("Day 05 t1: '%v'\n", score)
+	fmt.Printf("Day 05 t2 '%v'\n", score)
 	return score
 }

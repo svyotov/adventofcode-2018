@@ -78,5 +78,5 @@ func Run2(file string) {
 		panic("failed to read data " + err.Error())
 	}
 
-	fmt.Printf("Day 01 t1: '%v'\n", firstDuplicate) // 448
+	fmt.Printf("Day 01 t2: '%v'\n", firstDuplicate) // 448
 }
